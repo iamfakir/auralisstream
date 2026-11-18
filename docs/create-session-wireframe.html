@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create Session — Wireframe</title>
+    <style>
+      :root {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+        color: #29292d;
+        background: #fafafa;
+        font-size: 14px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        padding: 48px;
+      }
+      h1 {
+        font-size: 26px;
+        letter-spacing: -0.6px;
+        margin: 0 0 9px;
+      }
+      p {
+        color: #73737c;
+        line-height: 1.6;
+        margin: 0;
+        font-size: 13px;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:focus-visible,
+      input:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid #1d126e;
+        outline-offset: 3px;
+      }
+      header {
+        max-width: 1240px;
+        margin: 0 auto 35px;
+      }
+      .flow {
+        max-width: 1240px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+      .step-title {
+        font-size: 12px;
+        color: #73737c;
+        margin: 0 0 12px;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+      }
+      .window {
+        border: 1px solid #d9d9df;
+        background: #fff;
+        border-radius: 13px;
+        overflow: hidden;
+        height: 440px;
+      }
+      .bar {
+        height: 44px;
+        background: #f5f5f7;
+        border-bottom: 1px solid #e7e7eb;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 0 15px;
+      }
+      .bar i {
+        height: 7px;
+        width: 7px;
+        background: #d8d8dc;
+        border-radius: 50%;
+      }
+      .bar span {
+        font-size: 10px;
+        color: #86868e;
+        margin-left: auto;
+      }
+      .content {
+        padding: 28px 24px;
+      }
+      .center {
+        height: calc(100% - 44px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 25px;
+      }
+      .symbol {
+        width: 52px;
+        height: 52px;
+        border-radius: 15px;
+        border: 1px solid #d5d5da;
+        display: grid;
+        place-items: center;
+        color: #909098;
+        margin-bottom: 17px;
+        font-size: 23px;
+      }
+      .window h2 {
+        font-size: 20px;
+        letter-spacing: -0.4px;
+        margin: 0 0 10px;
+      }
+      .window p {
+        font-size: 11px;
+        line-height: 1.6;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #333338;
+        color: #fff;
+        border: 0;
+        border-radius: 6px;
+        padding: 8px 13px;
+        min-height: 33px;
+        font-size: 11px;
+        font-weight: 500;
+      }
+      .secondary {
+        background: #eeeef1;
+        color: #414148;
+      }
+      .create-trigger {
+        margin-top: 20px;
+      }
+      .shade {
+        height: calc(100% - 44px);
+        background: #efeff1;
+        padding: 34px 19px;
+        display: flex;
+        align-items: center;
+      }
+      .sheet {
+        border: 1px solid #d6d6dc;
+        border-radius: 11px;
+        padding: 23px 22px;
+        background: #fff;
+        box-shadow: 0 10px 25px #0000000d;
+        width: 100%;
+      }
+      .sheet h2 {
+        font-size: 17px;
+      }
+      .sheet p {
+        margin: 0 0 20px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 500;
+      }
+      .field input {
+        border: 1px solid #d8d8df;
+        border-radius: 5px;
+        background: #fcfcfd;
+        padding: 9px 10px;
+        font-size: 12px;
+        min-width: 0;
+        width: 100%;
+        color: #333;
+      }
+      .actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 7px;
+        margin-top: 24px;
+      }
+      .disclosure {
+        margin-top: 15px;
+        font-size: 10px;
+        color: #72727a;
+      }
+      .disclosure summary {
+        cursor: pointer;
+      }
+      .disclosure p {
+        margin: 10px 0 0;
+        font-size: 10px;
+      }
+      .status {
+        font-size: 10px;
+        color: #777780;
+        margin-top: 10px;
+        display: block;
+      }
+      .source {
+        margin-top: 24px;
+        border: 1px solid #e3e3e8;
+        border-radius: 9px;
+        padding: 17px;
+      }
+      .source strong {
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .source p {
+        margin-top: 5px;
+        font-size: 10px;
+      }
+      .source .buttons {
+        display: flex;
+        gap: 7px;
+        margin-top: 18px;
+        flex-wrap: wrap;
+      }
+      .guests {
+        margin-top: 25px;
+      }
+      .guests strong {
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .guests p {
+        font-size: 10px;
+        margin-top: 12px;
+      }
+      .room-title {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .room-title h2 {
+        overflow-wrap: anywhere;
+        font-size: 19px;
+      }
+      .more {
+        color: #777;
+        letter-spacing: 1px;
+      }
+      .annotation {
+        font-size: 12px;
+        line-height: 1.7;
+        margin-top: 17px;
+        max-width: 350px;
+        color: #73737c;
+      }
+      .annotation strong {
+        color: #29292d;
+        font-weight: 500;
+      }
+      .flow-step.highlight .window {
+        outline: 2px solid #a4a4ae;
+        outline-offset: 4px;
+      }
+      .flow-step.highlight .step-title {
+        color: #29292d;
+      }
+      footer {
+        max-width: 1240px;
+        margin: 33px auto 0;
+        border-top: 1px solid #e1e1e6;
+        padding-top: 20px;
+        font-size: 12px;
+        color: #73737c;
+      }
+      #message {
+        font-size: 12px;
+        color: #55555f;
+        margin-top: 16px;
+        min-height: 20px;
+      }
+      .button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      @media (max-width: 1000px) {
+        body {
+          padding: 30px;
+        }
+        .flow {
+          grid-template-columns: 1fr;
+          max-width: 420px;
+          gap: 30px;
+        }
+        header,
+        footer {
+          max-width: 420px;
+        }
+        .window {
+          height: 415px;
+        }
+        .annotation {
+          max-width: none;
+        }
+        .flow-step .window {
+          outline: none !important;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: light;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Create session</h1>
+      <p>
+        Wireframe · Desktop alpha · Select Create session to follow the flow.
+      </p>
+    </header>
+    <main class="flow">
+      <section class="flow-step" id="step-one">
+        <h2 class="step-title">1. Sessions</h2>
+        <div class="window">
+          <div class="bar">
+            <i></i><i></i><i></i><span>Auralis Streamer</span>
+          </div>
+          <div class="center">
+            <div class="symbol" aria-hidden="true">♫</div>
+            <h2>No sessions</h2>
+            <p>Create a session to preview<br />the listener experience.</p>
+            <button class="button create-trigger" id="start">
+              Create session
+            </button>
+          </div>
+        </div>
+        <p class="annotation">
+          One action on the empty screen. Existing sessions appear as a list.
+        </p>
+      </section>
+      <section class="flow-step" id="step-two">
+        <h2 class="step-title">2. New session</h2>
+        <div class="window">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="shade">
+            <div class="sheet">
+              <h2>New session</h2>
+              <p>Choose a name for this session.</p>
+              <form id="create-form">
+                <label class="field"
+                  >Session name<input
+                    id="name"
+                    required
+                    maxlength="80"
+                    placeholder="Mix review"
+                /></label>
+                <details class="disclosure">
+                  <summary>Session details</summary>
+                  <p>
+                    Stereo · 5 guests · Local preview<br />DAW capture and
+                    remote sharing unavailable.
+                  </p>
+                </details>
+                <div class="actions">
+                  <button type="button" class="button secondary" id="cancel">
+                    Cancel</button
+                  ><button class="button" id="create" disabled>
+                    Create session
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <p class="annotation">
+          One required field. Enter creates the session; Escape cancels. Details
+          stay collapsed.
+        </p>
+      </section>
+      <section class="flow-step" id="step-three">
+        <h2 class="step-title">3. Session controls</h2>
+        <div class="window">
+          <div class="bar"><i></i><i></i><i></i><span>‹ Sessions</span></div>
+          <div class="content">
+            <div class="room-title">
+              <div>
+                <h2 id="room-name">Mix review</h2>
+                <span class="status">● Local preview</span>
+              </div>
+              <span class="more" aria-label="More actions">•••</span>
+            </div>
+            <div class="source">
+              <strong>Audio source</strong>
+              <p>Not connected</p>
+              <p>
+                DAW capture and remote sharing<br />are not available in this
+                build.
+              </p>
+              <div class="buttons">
+                <button class="button" id="preview">Preview listener</button
+                ><button class="button secondary" id="pause">Pause</button>
+              </div>
+            </div>
+            <div class="guests">
+              <strong>Guests</strong>
+              <p id="guest-state">No guests yet.</p>
+            </div>
+            <div id="message" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+        <p class="annotation">
+          Creation opens this session directly. Rename, revoke access, and close
+          are in the More menu.
+        </p>
+      </section>
+    </main>
+    <footer>
+      Wireframe only. Previews do not stream DAW audio, create a public link, or
+      use hours.
+    </footer>
+    <script>
+      const input = document.getElementById("name");
+      const create = document.getElementById("create");
+      const steps = [
+        document.getElementById("step-one"),
+        document.getElementById("step-two"),
+        document.getElementById("step-three"),
+      ];
+      function select(index) {
+        steps.forEach((step, i) =>
+          step.classList.toggle("highlight", i === index),
+        );
+      }
+      document.getElementById("start").addEventListener("click", () => {
+        select(1);
+        input.focus();
+      });
+      input.addEventListener("input", () => {
+        create.disabled = !input.value.trim();
+      });
+      document
+        .getElementById("create-form")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (!input.value.trim()) return;
+          document.getElementById("room-name").textContent = input.value.trim();
+          select(2);
+          document.getElementById("message").textContent = "Session created.";
+        });
+      function cancel() {
+        input.value = "";
+        create.disabled = true;
+        select(0);
+        document.getElementById("start").focus();
+      }
+      document.getElementById("cancel").addEventListener("click", cancel);
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") cancel();
+      });
+      document.getElementById("preview").addEventListener("click", () => {
+        document.getElementById("message").textContent =
+          "The app opens a separate listener window with a name field and Listen button.";
+      });
+      document.getElementById("pause").addEventListener("click", (event) => {
+        const paused = event.currentTarget.textContent === "Pause";
+        event.currentTarget.textContent = paused ? "Resume" : "Pause";
+        document.getElementById("preview").disabled = paused;
+        document.getElementById("message").textContent = paused
+          ? "Preview paused."
+          : "Preview resumed.";
+      });
+    </script>
+  </body>
+</html>
